@@ -1,8 +1,9 @@
 import express from "express";
 import message from "./config/message"
-const app = express();
+import environment from "./config/enviroment";
 
-app.listen('3000', ()=>{
-    //console.log("hola mundo");
-    message("Hola mundo", "danger")
-});
+const app = express();
+app.set("PORT",process.env.PORT || 3000);
+
+
+export default app;
