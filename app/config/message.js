@@ -6,7 +6,7 @@ const message = (mensaje, tipo)=>{
             console.log(mensaje.bgRed);
             break;
         case "warning":
-            console.log(mensaje.bgyYellow);
+            console.log(mensaje.bgYellow);
             break;
         case "success":
             console.log(mensaje.bgGreen);
