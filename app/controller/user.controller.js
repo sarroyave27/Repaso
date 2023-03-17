@@ -18,8 +18,16 @@ export const findUser = async (req, res)=>{
         console.error("ha ocurrido un error");
     } 
 }
-export const insertUser = (req, res)=>{
-    
+export const insertUser = async (req, res)=>{
+    const name = req.body.name;
+    try {
+        const result = await pool.query(`CALL spInsertUser('${name}');`);
+        res.json(result);
+        
+    } catch (error) {
+        console.error("ha ocurrido un error")
+    }
+
 }
 export const deleteUser = (req, res)=>{
     
