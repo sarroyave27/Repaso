@@ -29,9 +29,30 @@ export const insertUser = async (req, res)=>{
     }
 
 }
-export const deleteUser = (req, res)=>{
-    
+export const deleteUser = async (req, res)=>{
+    const id = req.params.id;
+    try {
+        const result = await pool.query(`CALL spDeleteUser(${id})`);
+        if(result[0].affectedRows == 1)
+            res.json(result);
+        else
+            res.json({"rs": "No se elimino"});
+            
+    } catch (error) {
+        console.error(error);
+    }
 }
-export const updateUser = (req, res)=>{
-    
+export const updateUser = async (req, res)=>{
+    const id = req.body.id;
+    const name = req.body.name;
+    try {
+        const result = await pool.query(`CALL spUpdateUser(${id}, '${name}');`)
+        if(result[0].affectedRows != 0)
+            res.json(result);
+         else
+            res.json({"rs": "NO ACTUALIZO"});
+
+    } catch (error) {
+        console.error(error);
+    }
 }
