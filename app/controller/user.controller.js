@@ -15,7 +15,7 @@ export const findUser = async (req, res)=>{
         const [rows] = await pool.query(`CALL spFindUser(${id});`);
         res.json(rows);
     } catch (error) {
-        console.error("ha ocurrido un error");
+        console.error("ha ocurrido un error al encontrar al usuario");
     } 
 }
 export const insertUser = async (req, res)=>{
@@ -25,7 +25,7 @@ export const insertUser = async (req, res)=>{
         res.json(result);
         
     } catch (error) {
-        console.error("ha ocurrido un error")
+        console.error("ha ocurrido un error al insertar")
     }
 
 }
